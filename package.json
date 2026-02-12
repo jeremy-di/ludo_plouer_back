@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"No tests yer"\"",
+    "test": "echo \"No tests yet\"",
     "dev": "nodemon -r dotenv/config server"
   },
   "keywords": [],
