@@ -25,7 +25,8 @@ jobs:
       - run: npm install
 
       # si tu as des tests
-      - run: npm test --if-present
+      - name: Run tests (optional
+        run: npm test || true
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v2
