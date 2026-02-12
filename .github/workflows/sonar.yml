@@ -1,34 +1,32 @@
-name: SonarQube
+name: SonarCloud
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ "main", "master" ]
   pull_request:
 
 jobs:
-  sonar:
-    name: SonarQube Scan
+  sonarcloud:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Use Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - run: npm install
+      - run: npm ci
 
-      # si tu as des tests
-      - name: Run tests (optional
-        run: npm test || true
+      # Tests optionnels (ne casse pas si pas de tests)
+      - run: npm test || true
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v2
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
