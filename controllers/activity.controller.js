@@ -66,19 +66,6 @@ const updateActivity = async(req,res) => {
     }
 }
 
-// const deleteActivity = async(req, res) => {
-//     try {
-//         const activity = await Activity.findByIdAndDelete(req.params.id)
-//         if(!activity){
-//             return res.status(404).json({message: "activity doesn't exist"})
-//         }
-//         return res.status(200).json({message: "activity has been deleted"})
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({message: "Server error", error: error})
-//     }
-// }
-
 const archiveAllActivities = async (req, res) => {
     try {
         const activities = await Activity.find({}).lean()
