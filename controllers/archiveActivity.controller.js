@@ -1,24 +1,4 @@
 import ArchiveActivity from "../models/archiveActivity.model.js"
-import archiveActivityValidation from "../validations/archiveActivity.validation.js"
-
-// const createArchiveActivity = async(req,res)=>{
-//     try {
-//         const {body} = req
-//         if(!body){
-//             return res.status(400).json({message: "no data in the request"})
-//         }
-//         const {error} = archiveActivityValidation(body).archiveActivityCreate
-//         if(error){
-//             return res.status(401).json(error.details[0].message)
-//         }
-//         const archiveActivity = new ArchiveActivity(body)
-//         const newArchiveActivity = await archiveActivity.save()
-//         return res.status(201).json(newArchiveActivity)        
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({message: "Server error", error: error})
-//     }
-// }
 
 const getAllArchiveActivitys = async(req, res) => {
     try {
